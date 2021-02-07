@@ -7,7 +7,7 @@ int main()
     // gets(fname);
     scanf("%s", fname);
     fp = fopen(fname,"rb");
-    for (int i = 0; i<150; i++)
+    for (int i = 0; i<1000; i++)
     {
         ch = getc(fp);
         printf("%c", ch);
