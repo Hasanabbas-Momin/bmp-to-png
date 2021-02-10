@@ -8,3 +8,4 @@ https://medium.com/sysf/bits-to-bitmaps-a-simple-walkthrough-of-bmp-image-format
 
 https://www.geeksforgeeks.org/structures-c/
 
+http://paulbourke.net/dataformats/bitmaps/
