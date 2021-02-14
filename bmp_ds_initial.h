@@ -5,7 +5,7 @@
 
 struct a
 {
-    short filetype;//has to be BM or 42 4D
+    char filetype[2];//has to be BM or 42 4D 
     int filesize;
     int pdos;//PixelDataOffset
 
@@ -26,7 +26,7 @@ struct b
     unsigned int headersize;
     int width;
     int height;
-    unsigned int planes;
+    unsigned short int planes;
     int bpp;//bits per pixel for us it is 8(grayscale)
 
 //     Field Name, Size in bytes, Description
