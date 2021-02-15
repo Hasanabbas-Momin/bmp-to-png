@@ -5,8 +5,8 @@
 
 struct a
 {
-    char filetype[2];//has to be BM or 42 4D 
-    unsigned int filesize;
+    char file_type[2];//has to be BM or 42 4D 
+    unsigned int file_size;
     unsigned short int garbage1,garbage2;//reserved ones
     int offset;//PixelDataOffset
 
@@ -31,7 +31,7 @@ struct b
     unsigned short int bpp;//bits per pixel for us it is 8(grayscale)
     unsigned int compression;
     unsigned int image_size;
-    int not_needed[4];//XpixelsPerMeter,YpixelsPerMeter,TotalColors,ImportantColors
+    // int not_needed[4];//XpixelsPerMeter,YpixelsPerMeter,TotalColors,ImportantColors
 
 //     Field Name, Size in bytes, Description
 // HeaderSize, 4 bytes, An integer (unsigned) representing the size of the header in bytes. It should be '40' in decimal to represent BITMAPINFOHEADER header type.
