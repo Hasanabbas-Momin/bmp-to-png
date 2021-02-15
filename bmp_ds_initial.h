@@ -57,7 +57,7 @@ struct c//actual final img is stored here
 {
     BMPHEADER b_head;
     IMAGEINFO b_img_info;
-    char *pixels;//8 bits is 1 byte which is sizeof(char)
+    unsigned char *pixels;//8 bits is 1 byte which is sizeof(char). Need 0-255 which is unsigned char
 
 };
 
