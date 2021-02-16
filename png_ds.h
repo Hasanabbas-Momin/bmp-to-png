@@ -35,7 +35,7 @@ struct IDAT{
 
 struct TRNS{//ancillary chunk
 
-    char str[4]//should be "tRNS" or 116 82 78 83
+    char str[4];//should be "tRNS" or 116 82 78 83
     short transparency;
 
     
@@ -49,11 +49,11 @@ struct TRNS{//ancillary chunk
 
 struct BKGD{//ancillary chunk
 
-    char str[4]//"bKGD" or 98 75 71 68
+    char str[4];//"bKGD" or 98 75 71 68
     unsigned short bg;//0-255
     // For colour types 0 and 4 (greyscale, greyscale with alpha), the value
     //  is the grey level to be used as background in the range 0 to (2bitdepth)-1
-}
+};
 
 //no sBIT as sample_depth=bit_depth=8
 //fyi on sbit:https://stackoverflow.com/questions/9503994/whats-the-purpose-of-the-sbit-chunk-in-the-png-file
