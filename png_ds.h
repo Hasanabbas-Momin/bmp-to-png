@@ -1,8 +1,19 @@
 
-//first PNG signature must be written into file
+
+struct HEADER{
+
+    char first_byte;//should be 89 in hex
+    char PNG_SIGN[3];//"PNG"
+    short random1;//A DOS-style line ending (CRLF) to detect DOS-Unix line ending conversion of the data.
+    char random2;//A byte that stops display of the file under DOS when the command type has been used—the end-of-file character.
+    char random3;//A Unix-style line ending (LF) to detect Unix-DOS line ending conversion.
+
+};
+
+
 struct IHDR{
     
-    unsigned int size;
+    unsigned int size;//length of data in file
     char str[4];//should be "IHDR"
     int width;
     int height;
@@ -58,6 +69,8 @@ struct BKGD{//ancillary chunk
     // For colour types 0 and 4 (greyscale, greyscale with alpha), the value
     //  is the grey level to be used as background in the range 0 to (2bitdepth)-1
 };
+
+char IEND[4];//should be "IEND"
 
 //no sBIT as sample_depth=bit_depth=8
 //fyi on sbit:https://stackoverflow.com/questions/9503994/whats-the-purpose-of-the-sbit-chunk-in-the-png-file
