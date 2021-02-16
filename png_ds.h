@@ -1,7 +1,8 @@
 
 //first PNG signature must be written into file
 struct IHDR{
-
+    
+    unsigned int size;
     char str[4];//should be "IHDR"
     int width;
     int height;
@@ -26,7 +27,8 @@ struct IHDR{
 
 
 struct IDAT{
-
+    
+    unsigned int size;
     char str[4];//should be "IDAT"
     unsigned char pixels;
     
@@ -34,7 +36,8 @@ struct IDAT{
 
 
 struct TRNS{//ancillary chunk
-
+    
+    unsigned int size;
     char str[4];//should be "tRNS" or 116 82 78 83
     short transparency;
 
@@ -48,7 +51,8 @@ struct TRNS{//ancillary chunk
 };
 
 struct BKGD{//ancillary chunk
-
+    
+    unsigned int size;
     char str[4];//"bKGD" or 98 75 71 68
     unsigned short bg;//0-255
     // For colour types 0 and 4 (greyscale, greyscale with alpha), the value
