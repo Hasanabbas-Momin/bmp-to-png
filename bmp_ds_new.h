@@ -5,9 +5,10 @@
 
 struct a
 {
-    char filetype[2];//has to be BM or 42 4D 
-    int filesize;
-    int pdos;//PixelDataOffset
+    char file_type[2];//has to be BM or 42 4D 
+    unsigned int file_size;
+    unsigned short int garbage1,garbage2;//reserved ones
+    int offset;//PixelDataOffset
 
 // FileType	2 bytes	A 2 character string value in ASCII to specify a DIB file type. It must be 'BM' or '0x42 0x4D' in hexadecimals for modern compatibility reasons.
 // FileSize	4 bytes	An integer (unsigned) representing entire file size in bytes. This value is basically the number of bytes in a BMP image file.
@@ -16,18 +17,21 @@ struct a
 // PixelDataOffset	4 bytes	An integer (unsigned) representing the offset of actual pixel data in bytes. In nutshell:- it is the number of bytes between start of the file (0) and the first byte of the pixel data.
 
 
-   //I have not initialised anything for reserved as it will not be useful during conversion i think 
+    
     
 };
 typedef struct a BMPHEADER;
 
 struct b
 {
-    unsigned int headersize;
+    unsigned int header_size;
     int width;
     int height;
-    unsigned short int planes;
-    int bpp;//bits per pixel for us it is 8(grayscale)
+    unsigned short int color_planes;
+    unsigned short int bpp;//bits per pixel for us it is 8(grayscale)
+    unsigned int compression;
+    unsigned int image_size;
+    // int not_needed[4];//XpixelsPerMeter,YpixelsPerMeter,TotalColors,ImportantColors
 
 //     Field Name, Size in bytes, Description
 // HeaderSize, 4 bytes, An integer (unsigned) representing the size of the header in bytes. It should be '40' in decimal to represent BITMAPINFOHEADER header type.
@@ -44,8 +48,7 @@ struct b
 // ----,----,----
 // Total, 40 bytes, Size of the BITMAPINFOHEADER in bytes.
 
-//I have not declared the other fields as idt they are needed when witing into png
-//Can be added if need be
+
 
 
 
