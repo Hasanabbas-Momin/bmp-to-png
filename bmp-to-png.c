@@ -20,7 +20,7 @@ void BMP_TO_PNG()
     I1.fm=0;
     I1.im=0;
     struct IDAT I2;
-    I2.size==Read_BMPfile.img_info.header_size;
+    I2.size=Read_BMPfile.img_info.header_size;
     I2.str="IDAT";
 
 }
