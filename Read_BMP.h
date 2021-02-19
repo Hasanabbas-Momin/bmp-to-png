@@ -1,14 +1,15 @@
+#include "bmp_ds_new.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-struct BMPheader                        // struct a
-{
-    char file_type[2];
-    unsigned int file_size;
-    unsigned short int garbage1;
-    unsigned short int garbage2;
-    unsigned int offset;
-};
+// struct BMPheader                        // struct a
+// {
+//     char file_type[2];
+//     unsigned int file_size;
+//     unsigned short int garbage1;
+//     unsigned short int garbage2;
+//     unsigned int offset;
+// };
 
 struct GRAYSCALE
 {
@@ -47,17 +48,17 @@ void freeimagedata(struct IMAGE picture_data)
     free(picture_data.graycolor);
 }
 
-struct Image_info                       // struct b
-{
-    unsigned int header_size;
-    int width;
-    int height;
-    unsigned short int color_planes;
-    unsigned short int bpp;             // bpp => bytes per pixel
-    unsigned int compression;
-    unsigned int image_size;
-    int not_needed[4];
-};
+// struct Image_info                       // struct b
+// {
+//     unsigned int header_size;
+//     int width;
+//     int height;
+//     unsigned short int color_planes;
+//     unsigned short int bpp;             // bpp => bytes per pixel
+//     unsigned int compression;
+//     unsigned int image_size;
+//     int not_needed[4];
+// };
 
 struct IMAGE Read_BMPfile(char *file)
 {
@@ -94,14 +95,14 @@ struct IMAGE Read_BMPfile(char *file)
     fseek(fp,bmp_hdr.offset,SEEK_SET);
     image = readImage(fp,img_info.height,img_info.width);
 
-    // for(int i=0;i<(img_info.height);i++)
-    // {
-    //     for(int j=0;j<(img_info.width);j++)
-    //     {
-    //         printf("%c",image.graycolor[i][j]);
-    //     }
+    for(int i=0;i<(img_info.height);i++)
+    {
+        for(int j=0;j<(img_info.width);j++)
+        {
+            printf("%c",image.graycolor[i][j]);
+        }
         
-    // }
+    }
 
 
 

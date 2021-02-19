@@ -3,12 +3,13 @@
 
 
 
-struct a
+// struct a
+struct BMPheader
 {
     char file_type[2];//has to be BM or 42 4D 
     unsigned int file_size;
     unsigned short int garbage1,garbage2;//reserved ones
-    int offset;//PixelDataOffset
+    unsigned int offset;//PixelDataOffset
 
 // FileType	2 bytes	A 2 character string value in ASCII to specify a DIB file type. It must be 'BM' or '0x42 0x4D' in hexadecimals for modern compatibility reasons.
 // FileSize	4 bytes	An integer (unsigned) representing entire file size in bytes. This value is basically the number of bytes in a BMP image file.
@@ -20,18 +21,19 @@ struct a
     
     
 };
-typedef struct a BMPHEADER;
+// typedef struct a BMPheader;
 
-struct b
+// struct b
+struct Image_info
 {
     unsigned int header_size;
     int width;
     int height;
     unsigned short int color_planes;
-    unsigned short int bpp;//bits per pixel for us it is 8(grayscale)
+    unsigned short int bpp;        //bits per pixel for us it is 8(grayscale)
     unsigned int compression;
     unsigned int image_size;
-    // int not_needed[4];//XpixelsPerMeter,YpixelsPerMeter,TotalColors,ImportantColors
+    int not_needed[4];            //XpixelsPerMeter, YpixelsPerMeter , TotalColors , ImportantColors
 
 //     Field Name, Size in bytes, Description
 // HeaderSize, 4 bytes, An integer (unsigned) representing the size of the header in bytes. It should be '40' in decimal to represent BITMAPINFOHEADER header type.
@@ -54,17 +56,17 @@ struct b
 
 };
 
-typedef struct b IMAGEINFO;
+// typedef struct b Image_info;
 
-struct c//actual final img is stored here
-{
-    BMPHEADER b_head;
-    IMAGEINFO b_img_info;
-    unsigned char *pixels;//8 bits is 1 byte which is sizeof(char). Need 0-255 which is unsigned char
+// struct c//actual final img is stored here
+// {
+//     // BMPheader b_head;
+//     // Image_info b_img_info;
+//     unsigned char *pixels;//8 bits is 1 byte which is sizeof(char). Need 0-255 which is unsigned char
 
-};
+// };
 
-typedef struct c BMP;
+// typedef struct c BMP;
 
 
 
