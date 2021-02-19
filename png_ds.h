@@ -8,6 +8,9 @@ struct HEADER{
     char random2;//A byte that stops display of the file under DOS when the command type has been used—the end-of-file character.
     char random3;//A Unix-style line ending (LF) to detect Unix-DOS line ending conversion.
 
+   // (decimal)              137  80  78  71  13  10  26  10
+   // (hexadecimal)           89  50  4e  47  0d  0a  1a  0a
+   // (ASCII C notation)    \211   P   N   G  \r  \n \032 \n
 };
 
 
