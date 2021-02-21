@@ -28,7 +28,7 @@ void BMP_TO_PNG()
 
 
     
-    IEND[4]="IEND";
+    IEND[4] = "IEND";
 
     
 
