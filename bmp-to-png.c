@@ -4,7 +4,7 @@
 void BMP_TO_PNG()
 {
     struct HEADER h1;
-    h1.first_byte = 89;
+    h1.first_byte = 137;
     h1.PNG_SIGN[3] = "PNG";
     h1.random1 = 3338;
     h1.random2 = 26;
@@ -25,6 +25,12 @@ void BMP_TO_PNG()
     struct IDAT I2;
     I2.size = Read_BMPfile.img_info.header_size;
     I2.str = "IDAT";
+
+
+    
+    IEND[4] = "IEND";
+
+    
 
 // int conversion()
 // {
