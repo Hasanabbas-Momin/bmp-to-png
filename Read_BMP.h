@@ -59,14 +59,15 @@ void freeimagedata(struct IMAGE picture_data)           // function to free the 
 //     unsigned int image_size;
 //     int not_needed[4];
 // };
+    struct BMPheader bmp_hdr;
+    struct Image_info img_info;
+    struct IMAGE image;
 
 struct IMAGE Read_BMPfile(char *file)                   // final function to execute assighning the data
 {
     FILE *fp = fopen(file,"rb");   // *fp => file pointer
     
-    struct BMPheader bmp_hdr;
-    struct Image_info img_info;
-    struct IMAGE image;
+    
 
     fread(bmp_hdr.file_type,2,1,fp);                                        // reading header 
     if((bmp_hdr.file_type[0] != 'B') || (bmp_hdr.file_type[1] != 'M'))
