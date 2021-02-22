@@ -11,19 +11,19 @@
 //     unsigned int offset;
 // };
 
-struct GRAYSCALE
+struct GRAYSCALE                                        // struct to store information of a single pixel 
 {
     unsigned char gray;
 };
 
-struct IMAGE
+struct IMAGE                                            // struct to be used to get the pixel data
 {
     int height;
     int width;
     struct GRAYSCALE **graycolor;
 };
 
-struct IMAGE readImage(FILE*fp,int height,int width)
+struct IMAGE readImage(FILE*fp,int height,int width)    // struct that reads the pixel data
 {
     int i;
 
@@ -41,7 +41,7 @@ struct IMAGE readImage(FILE*fp,int height,int width)
     return picture_data;
 }
 
-void freeimagedata(struct IMAGE picture_data)
+void freeimagedata(struct IMAGE picture_data)           // function to free the utilized space
 {
     int i;
     for(i=(picture_data.height-1);i>=0;i--) free(picture_data.graycolor[i]);
@@ -60,7 +60,7 @@ void freeimagedata(struct IMAGE picture_data)
 //     int not_needed[4];
 // };
 
-struct IMAGE Read_BMPfile(char *file)
+struct IMAGE Read_BMPfile(char *file)                   // final function to execute assighning the data
 {
     FILE *fp = fopen(file,"rb");   // *fp => file pointer
     
@@ -68,7 +68,7 @@ struct IMAGE Read_BMPfile(char *file)
     struct Image_info img_info;
     struct IMAGE image;
 
-    fread(bmp_hdr.file_type,2,1,fp);
+    fread(bmp_hdr.file_type,2,1,fp);                                        // reading header 
     if((bmp_hdr.file_type[0] != 'B') || (bmp_hdr.file_type[1] != 'M'))
     {
         fclose(fp);        
@@ -76,12 +76,11 @@ struct IMAGE Read_BMPfile(char *file)
     }
     printf("File type:%c%c\n",bmp_hdr.file_type[0],bmp_hdr.file_type[1]);
     
-    
     fread(&bmp_hdr.file_size,3*sizeof(int),1,fp);
     printf("File size:%d\n",bmp_hdr.file_size);
 
-    
-    fread(&img_info.header_size,sizeof(struct Image_info),1,fp);
+
+    fread(&img_info.header_size,sizeof(struct Image_info),1,fp);            // reading img info
     if((img_info.header_size != 40) || (img_info.bpp != 1) || (img_info.compression != 0 ))
     {
         fclose(fp);
@@ -92,8 +91,8 @@ struct IMAGE Read_BMPfile(char *file)
     printf("Header size: %u\nwidth: %d\nheight: %d\ncolorplanes: %hu\nBytes per pixel: %hu\nCompression: %u\nSize of image: %u",
             img_info.header_size,img_info.width,img_info.height,img_info.color_planes,img_info.bpp,img_info.compression,img_info.image_size);
 
-    fseek(fp,bmp_hdr.offset,SEEK_SET);
-    image = readImage(fp,img_info.height,img_info.width);
+    fseek(fp,bmp_hdr.offset,SEEK_SET);                          // to set the pointer(fp) to the initial of the image pixel data
+    image = readImage(fp,img_info.height,img_info.width);       // call of function to read image data
 
     for(int i=0;i<(img_info.height);i++)
     {
@@ -103,16 +102,8 @@ struct IMAGE Read_BMPfile(char *file)
         }
         
     }
-
-
-
-
-
     fclose(fp);
     // freeimagedata(image);
-    
-
-
     return image;
 }
 
