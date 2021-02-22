@@ -1,9 +1,18 @@
 // #include "bmp_ds_new.h"
 #include "png_ds.h"
-#include "Read_BMP.h"
+#include"bmp_ds_new.h"
+#include "header.h"
 #include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+unsigned int crc32b(unsigned char *message);
+
 void BMP_TO_PNG()
 {
+    // struct IMAGE picture_data;
+    // freeimagedata(picture_data);
+
     struct HEADER h1;
     h1.first_byte = 137;
     // h1.PNG_SIGN[3] = "PNG";
@@ -11,7 +20,8 @@ void BMP_TO_PNG()
     h1.random1 = 3338;
     h1.random2 = 26;
     h1.random3 = 10;
-    
+    char *b= (char *)&h1;
+    h1.crc= crc32b(b);
     
     struct IHDR I1;
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
@@ -25,14 +35,38 @@ void BMP_TO_PNG()
     I1.cm = 0;
     I1.fm = 0;
     I1.im = 0;
+    char *c= (char *)&I1;
+    I1.crc= crc32b(c);
 
     struct IDAT I2;
     I2.size = img_info.header_size;
     // I2.str = "IDAT";
     strcpy(I2.str, "IDAT");
+    char *d= (char *)&image.graycolor;
+    I2.crc= crc32b(d);
+    
 
     // IEND[] = {"I", "E", "N", "D"};
     strcpy(IEND, "IEND");
+}
+
+
+unsigned int crc32b(unsigned char *message) {
+   int i, j;
+   unsigned int byte, crc, mask;
+
+   i = 0;
+   crc = 0xFFFFFFFF;
+   while (message[i] != 0) {
+      byte = message[i];            // Get next byte.
+      crc = crc ^ byte;
+      for (j = 7; j >= 0; j--) {    // Do eight times.
+         mask = -(crc & 1);
+         crc = (crc >> 1) ^ (0xEDB88320 & mask);
+      }
+      i = i + 1;
+   }
+   return ~crc;
 }
 
     
