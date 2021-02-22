@@ -4,9 +4,12 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
+void BMP_TO_PNG();
 
 int main(){
-    struct IMAGE Read_BMPfile(char *file);
-    void BMP_TO_PNG();
+    char s[20];
+    scanf("%s", s);
+    Read_BMPfile(s);
+    BMP_TO_PNG();
     writepng(h1, I1, I2);
 }

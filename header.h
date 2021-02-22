@@ -1,3 +1,6 @@
+#ifndef header_h
+#define header_h
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -18,8 +21,10 @@ struct IMAGE image;
 void freeimagedata(struct IMAGE picture_data);
 struct IMAGE Read_BMPfile(char *file);
 
-struct HEADER h1;
-struct IHDR I1;
-struct IDAT I2;
+// void BMP_TO_PNG()
+// struct HEADER h1;
+// struct IHDR I1;
+// struct IDAT I2;
 
 int writepng(struct HEADER, struct IHDR, struct IDAT);
+#endif

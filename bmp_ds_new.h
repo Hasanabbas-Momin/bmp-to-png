@@ -1,4 +1,5 @@
-
+#ifndef bmpds_h
+#define bmpds_h
 
 
 
@@ -69,5 +70,5 @@ struct Image_info
 // typedef struct c BMP;
 
 
-
+#endif
 

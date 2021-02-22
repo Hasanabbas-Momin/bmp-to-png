@@ -1,4 +1,5 @@
-
+#ifndef pngds_h
+#define pngds_h
 
 struct HEADER{
 
@@ -87,6 +88,9 @@ char IEND[4];//should be "IEND"
 
 
 
+struct HEADER h1;
+struct IHDR I1;
+struct IDAT I2;
 
 
-
+#endif

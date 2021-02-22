@@ -1,7 +1,7 @@
 #include "bmp_ds_new.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "header.h"
+// #include "header.h"
 // struct BMPheader                        // struct a
 // {
 //     char file_type[2];
