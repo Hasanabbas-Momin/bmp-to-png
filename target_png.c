@@ -4,7 +4,7 @@
 
 
 
-void writepng(void);
+void writepng(struct HEADER,struct IHDR, struct IDAT, int*);
 
 void writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2,IEND)
 {
