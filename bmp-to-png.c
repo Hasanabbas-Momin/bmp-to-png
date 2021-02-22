@@ -13,7 +13,7 @@ void BMP_TO_PNG()
     
     struct IHDR I1;
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
-    I1.size = 13
+    I1.size = 13;
     I1.str = "IHDR";
     I1.width = Read_BMPfile.img_info.width;
     I1.height = Read_BMPfile.img_info.height;
@@ -30,6 +30,7 @@ void BMP_TO_PNG()
 
     
     IEND[4] = "IEND";
+}
 
     
 
