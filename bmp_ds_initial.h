@@ -7,6 +7,7 @@ struct a
 {
     char filetype[2];//has to be BM or 42 4D 
     int filesize;
+    
     int pdos;//PixelDataOffset
 
 // FileType	2 bytes	A 2 character string value in ASCII to specify a DIB file type. It must be 'BM' or '0x42 0x4D' in hexadecimals for modern compatibility reasons.
