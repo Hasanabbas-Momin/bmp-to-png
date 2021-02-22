@@ -10,6 +10,7 @@ void BMP_TO_PNG()
     h1.random2 = 26;
     h1.random3 = 10;
     
+    
     struct IHDR I1;
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
     I1.size = 13
