@@ -7,6 +7,7 @@ struct HEADER{
     short random1;//A DOS-style line ending (CRLF) to detect DOS-Unix line ending conversion of the data.
     char random2;//A byte that stops display of the file under DOS when the command type has been used—the end-of-file character.
     char random3;//A Unix-style line ending (LF) to detect Unix-DOS line ending conversion.
+    unsigned int crc;
 
    // (decimal)              137  80  78  71  13  10  26  10
    // (hexadecimal)           89  50  4e  47  0d  0a  1a  0a
@@ -26,6 +27,7 @@ struct IHDR{
     char cm;//compression method
     char fm;//filter method
     char im;//interlace method
+    unsigned int crc;
     // Width	4 bytes
     // Height	4 bytes
     // Bit depth	1 byte
@@ -45,6 +47,7 @@ struct IDAT{
     unsigned int size;
     char str[4];//should be "IDAT"
     unsigned char pixels;
+    unsigned int crc;
     
 };
 
@@ -54,6 +57,7 @@ struct TRNS{//ancillary chunk
     unsigned int size;
     char str[4];//should be "tRNS" or 116 82 78 83
     short transparency;
+    unsigned int crc;
 
     
     //  For colour types 0 or 2, two bytes per sample
@@ -69,6 +73,7 @@ struct BKGD{//ancillary chunk
     unsigned int size;
     char str[4];//"bKGD" or 98 75 71 68
     unsigned short bg;//0-255
+    unsigned int crc;
     // For colour types 0 and 4 (greyscale, greyscale with alpha), the value
     //  is the grey level to be used as background in the range 0 to (2bitdepth)-1
 };
