@@ -3,12 +3,13 @@
 
 struct HEADER{
 
-    char first_byte;//should be 89 in hex
-    char PNG_SIGN[3];//"PNG"
-    short random1;//A DOS-style line ending (CRLF) to detect DOS-Unix line ending conversion of the data.
-    char random2;//A byte that stops display of the file under DOS when the command type has been used—the end-of-file character.
-    char random3;//A Unix-style line ending (LF) to detect Unix-DOS line ending conversion.
-    unsigned int crc;
+    char arr[8];
+    // char first_byte;//should be 89 in hex
+    // char PNG_SIGN[3];//"PNG"
+    // char random1;//A DOS-style line ending (CRLF) to detect DOS-Unix line ending conversion of the data.
+    // char random2;//A byte that stops display of the file under DOS when the command type has been used—the end-of-file character.
+    // char random3;//A Unix-style line ending (LF) to detect Unix-DOS line ending conversion.
+    // unsigned int crc;
 
    // (decimal)              137  80  78  71  13  10  26  10
    // (hexadecimal)           89  50  4e  47  0d  0a  1a  0a
@@ -79,8 +80,11 @@ struct BKGD{//ancillary chunk
     //  is the grey level to be used as background in the range 0 to (2bitdepth)-1
 };
 
-char IEND[4];//should be "IEND"
 
+struct IEND{
+    char iend[4];//should be "IEND"
+    unsigned int crc;
+};
 //no sBIT as sample_depth=bit_depth=8
 //fyi on sbit:https://stackoverflow.com/questions/9503994/whats-the-purpose-of-the-sbit-chunk-in-the-png-file
 
@@ -91,6 +95,7 @@ char IEND[4];//should be "IEND"
 struct HEADER h1;
 struct IHDR I1;
 struct IDAT I2;
+struct IEND end;
 
 
 #endif

@@ -7,7 +7,7 @@
 
 // int writepng(struct HEADER,struct IHDR, struct IDAT); // Function to write the png data into a .png file
 
-extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2)
+extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2, struct IEND end)
 {
    FILE *ft = fopen("convertedimage.png","wb");
    
@@ -23,13 +23,13 @@ extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2)
    
    for(int i=(image.height-1);i>=0;i--)//writing the pixel data in IDAT chunk
    {
-        image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));
+      //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
         fwrite(image.graycolor[i],img_info.width,sizeof(struct GRAYSCALE),ft);
    }
    fwrite(&I2.crc,sizeof(unsigned int),1,ft);//writing the crc in IDAT chunk
    
-   fwrite(IEND,4*sizeof(char),1,ft);//writing the IEND chunk   
-   
+   fwrite(&end,sizeof(struct IEND),1,ft);//writing the IEND chunk   
+   // fwrite(,4*sizeof(char),1,ft);
    fclose(ft);
 
 }

@@ -11,5 +11,5 @@ int main(){
     scanf("%s", s);
     Read_BMPfile(s);
     BMP_TO_PNG();
-    writepng(h1, I1, I2);
+    writepng(h1, I1, I2, end);
 }

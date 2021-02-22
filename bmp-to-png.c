@@ -11,19 +11,28 @@ unsigned int crc32b(unsigned char *message);
 struct HEADER h1;
 struct IHDR I1;
 struct IDAT I2;
+struct IEND end;
 void BMP_TO_PNG()
 {
     // struct IMAGE picture_data;
     // freeimagedata(picture_data);
 
-    h1.first_byte = 137;
-    // h1.PNG_SIGN[3] = "PNG";
-    strcpy(h1.PNG_SIGN, "PNG");
-    h1.random1 = 3338;
-    h1.random2 = 26;
-    h1.random3 = 10;
-    char *b= (char *)&h1;
-    h1.crc= crc32b(b);
+    h1.arr[0] = 137;
+    h1.arr[1] = 80;
+    h1.arr[2] = 78;
+    h1.arr[3] = 71;
+    h1.arr[4] = 13;
+    h1.arr[5] = 10;
+    h1.arr[6] = 26;
+    h1.arr[7] = 10;
+    // h1.first_byte = 137;
+    // // h1.PNG_SIGN[3] = "PNG";
+    // strcpy(h1.PNG_SIGN, "PNG");
+    // h1.random1 = 3338;
+    // h1.random2 = 26;
+    // h1.random3 = 10;
+    // char *b= (char *)&h1;
+    // h1.crc= crc32b(b);
     
     
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
@@ -49,7 +58,9 @@ void BMP_TO_PNG()
     
 
     // IEND[] = {"I", "E", "N", "D"};
-    strcpy(IEND, "IEND");
+    strcpy(end.iend, "IEND");
+    char *e= (char *)&end;
+    end.crc= crc32b(e);
 }
 
 

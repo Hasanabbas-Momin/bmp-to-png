@@ -26,5 +26,5 @@ struct IMAGE Read_BMPfile(char *file);
 // struct IHDR I1;
 // struct IDAT I2;
 
-int writepng(struct HEADER, struct IHDR, struct IDAT);
+extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2, struct IEND end);
 #endif
