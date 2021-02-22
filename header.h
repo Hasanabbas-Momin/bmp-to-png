@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 struct GRAYSCALE                                        // struct to store information of a single pixel 
 {
     unsigned char gray;
@@ -16,3 +17,9 @@ struct Image_info img_info;
 struct IMAGE image;
 void freeimagedata(struct IMAGE picture_data);
 struct IMAGE Read_BMPfile(char *file);
+
+struct HEADER h1;
+struct IHDR I1;
+struct IDAT I2;
+
+int writepng(struct HEADER, struct IHDR, struct IDAT);

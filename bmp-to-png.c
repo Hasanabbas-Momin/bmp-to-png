@@ -8,12 +8,14 @@
 
 unsigned int crc32b(unsigned char *message);
 
+struct HEADER h1;
+struct IHDR I1;
+struct IDAT I2;
 void BMP_TO_PNG()
 {
     // struct IMAGE picture_data;
     // freeimagedata(picture_data);
 
-    struct HEADER h1;
     h1.first_byte = 137;
     // h1.PNG_SIGN[3] = "PNG";
     strcpy(h1.PNG_SIGN, "PNG");
@@ -23,7 +25,7 @@ void BMP_TO_PNG()
     char *b= (char *)&h1;
     h1.crc= crc32b(b);
     
-    struct IHDR I1;
+    
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
     I1.size = 13;
     // I1.str = "IHDR";
@@ -38,7 +40,7 @@ void BMP_TO_PNG()
     char *c= (char *)&I1;
     I1.crc= crc32b(c);
 
-    struct IDAT I2;
+    
     I2.size = img_info.header_size;
     // I2.str = "IDAT";
     strcpy(I2.str, "IDAT");
