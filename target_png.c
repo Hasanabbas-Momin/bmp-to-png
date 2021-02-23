@@ -1,6 +1,6 @@
 #include "bmp_ds_new.h"
 #include "png_ds.h"
-// #include "Read_BMP.h"
+#include "Read_BMP.h"
 #include"header.h"
 
 
@@ -21,9 +21,9 @@ extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2, struct IEND 
    fwrite(&I2.size,sizeof(unsigned int),1,ft); //writing the IDAT chunk
    fwrite(&I2.str,4*sizeof(unsigned char),1,ft);
    
-   for(int i=I1.height*7.0/8;i<(I1.height);i++)//writing the pixel data in IDAT chunk
+   for(int i=0/*img_info.height*7.0/8*/;i<(img_info.height);i++)//writing the pixel data in IDAT chunk
    {
-      //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
+        image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
         fwrite(image.graycolor[i],img_info.width,sizeof(struct GRAYSCALE),ft);
    }
    fwrite(&I2.crc,sizeof(unsigned int),1,ft);//writing the crc in IDAT chunk

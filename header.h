@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+int reverse(int variable);
 struct GRAYSCALE                                        // struct to store information of a single pixel 
 {
     unsigned char gray;

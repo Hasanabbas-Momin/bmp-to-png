@@ -36,12 +36,12 @@ void BMP_TO_PNG()
     
     
     // I1.size = Read_BMPfile.bmp.hdr.file_size;     // this is equal to 13 so no need to take it
-    I1.size = 13;
+    I1.size = reverse(13);
     // I1.str = "IHDR";
     strcpy(I1.str, "IHDR");
-    I1.width = img_info.width;
+    I1.width = reverse(img_info.width);
     // printf("\n%i", I1.width);
-    I1.height = img_info.height;
+    I1.height = reverse(img_info.height);
     // printf("\n%i", I1.height);
     I1.bit_depth = 8;
     I1.colour_type = 0;
@@ -49,20 +49,20 @@ void BMP_TO_PNG()
     I1.fm = 0;
     I1.im = 0;
     char *c= (char *)&I1;
-    I1.crc= crc32b(c);
+    I1.crc= reverse(crc32b(c));
 
     
-    I2.size = img_info.header_size;
+    I2.size = reverse(img_info.header_size);
     // I2.str = "IDAT";
     strcpy(I2.str, "IDAT");
     char *d= (char *)&image.graycolor;
-    I2.crc= crc32b(d);
+    I2.crc= reverse(crc32b(d));
     
 
     // IEND[] = {"I", "E", "N", "D"};
     strcpy(end.iend, "IEND");
     char *e= (char *)&end;
-    end.crc= crc32b(e);
+    end.crc= reverse(crc32b(e));
 }
 
 
