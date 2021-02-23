@@ -7,7 +7,7 @@
 
 // int writepng(struct HEADER,struct IHDR, struct IDAT); // Function to write the png data into a .png file
 
-extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2, struct IEND end)
+extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2,struct IEND end)
 {
    FILE *ft = fopen("convertedimage.png","wb");
    
