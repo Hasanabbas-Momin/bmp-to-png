@@ -4,7 +4,7 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include"Read_BMP.h"
+// #include"Read_BMP.h"
 void BMP_TO_PNG();
 
 int main(){
