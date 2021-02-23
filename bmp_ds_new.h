@@ -1,7 +1,7 @@
 #ifndef bmpds_h
 #define bmpds_h
 
-
+#pragma pack(1)
 
 
 // struct a

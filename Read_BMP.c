@@ -95,14 +95,14 @@ struct IMAGE Read_BMPfile(char *file)                   // final function to exe
     fseek(fp,bmp_hdr.offset,SEEK_SET);                          // to set the pointer(fp) to the initial of the image pixel data
     image = readImage(fp,img_info.height,img_info.width);       // call of function to read image data
 
-    for(int i=0;i<(img_info.height);i++)
-    {
-        for(int j=0;j<(img_info.width);j++)
-        {
-            printf("%c",image.graycolor[i][j]);
-        }
+    // for(int i=0;i<(img_info.height);i++)
+    // {
+    //     for(int j=0;j<(img_info.width);j++)
+    //     {
+    //         printf("%c",image.graycolor[i][j]);
+    //     }
         
-    }
+    // }
     fclose(fp);
     // freeimagedata(image);
     return image;

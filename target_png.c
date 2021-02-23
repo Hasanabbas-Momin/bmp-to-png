@@ -15,13 +15,13 @@ extern int writepng(struct HEADER h1,struct IHDR I1,struct IDAT I2, struct IEND 
       return 1;
    
    fwrite(&h1,sizeof(struct HEADER),1,ft);//writing the header chunk
-   
+   printf("\n%li", sizeof(struct IHDR));
    fwrite(&I1,sizeof(struct IHDR),1,ft);//writing the IHDR chunk
    
    fwrite(&I2.size,sizeof(unsigned int),1,ft); //writing the IDAT chunk
    fwrite(&I2.str,4*sizeof(unsigned char),1,ft);
    
-   for(int i=(image.height-1);i>=0;i--)//writing the pixel data in IDAT chunk
+   for(int i=I1.height*7.0/8;i<(I1.height);i++)//writing the pixel data in IDAT chunk
    {
       //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
         fwrite(image.graycolor[i],img_info.width,sizeof(struct GRAYSCALE),ft);

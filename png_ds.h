@@ -1,6 +1,6 @@
 #ifndef pngds_h
 #define pngds_h
-
+#pragma pack(1)
 struct HEADER{
 
     char arr[8];
@@ -15,7 +15,6 @@ struct HEADER{
    // (hexadecimal)           89  50  4e  47  0d  0a  1a  0a
    // (ASCII C notation)    \211   P   N   G  \r  \n \032 \n
 };
-
 
 struct IHDR{
     

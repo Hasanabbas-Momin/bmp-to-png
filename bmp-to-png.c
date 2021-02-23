@@ -40,7 +40,9 @@ void BMP_TO_PNG()
     // I1.str = "IHDR";
     strcpy(I1.str, "IHDR");
     I1.width = img_info.width;
+    // printf("\n%i", I1.width);
     I1.height = img_info.height;
+    // printf("\n%i", I1.height);
     I1.bit_depth = 8;
     I1.colour_type = 0;
     I1.cm = 0;

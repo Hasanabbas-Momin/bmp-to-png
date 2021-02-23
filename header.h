@@ -1,6 +1,6 @@
 #ifndef header_h
 #define header_h
-
+#pragma pack(1)
 #include<stdio.h>
 #include<stdlib.h>
 
