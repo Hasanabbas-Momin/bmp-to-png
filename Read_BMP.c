@@ -28,7 +28,7 @@ struct IMAGE readImage(FILE*fp,int height,int width)    // struct that reads the
     int i;
 
     struct IMAGE picture_data;
-    picture_data.graycolor = (struct GRAYSCALE**) malloc(height*sizeof(struct GRAYSCALE));       // changed from malloc(height*sizeof(void*));
+    picture_data.graycolor = (struct GRAYSCALE**) malloc(height*sizeof(void*));       // changed from malloc(height*sizeof(void*));
     picture_data.height = height;
     picture_data.width = width;
 

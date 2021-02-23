@@ -10,12 +10,33 @@ unsigned int crc32b(unsigned char *message);
 
 struct HEADER h1;
 struct IHDR I1;
-struct IDAT I2;
+
 struct IEND end;
 void BMP_TO_PNG()
 {
+   // struct IDAT{
+    
+   //  unsigned int size;
+   //  char str[4];//should be "IDAT"
+   // //  struct GRAYSCALE **graycolor;
+   //  // unsigned char pixels;
+   //  struct GRAYSCALE arr[img_info.height][img_info.width];
+   //  unsigned int crc;
+   //  };
+
+
+
+   // struct IDAT I2;
+   // for(int i=0;i<(img_info.height);i++)
+   // {
+   //    for (int j = 0;j<(img_info.width); j++)
+   //       I2.arr[i][j] = image.graycolor[i][j];
+   // }
+
+
     // struct IMAGE picture_data;
     // freeimagedata(picture_data);
+  
 
     h1.arr[0] = 137;
     h1.arr[1] = 80;
@@ -52,11 +73,11 @@ void BMP_TO_PNG()
     I1.crc= reverse(crc32b(c));
 
     
-    I2.size = reverse(img_info.header_size);
-    // I2.str = "IDAT";
-    strcpy(I2.str, "IDAT");
-    char *d= (char *)&image.graycolor;
-    I2.crc= reverse(crc32b(d));
+   //  I2.size = reverse(img_info.header_size);
+   //  // I2.str = "IDAT";
+   //  strcpy(I2.str, "IDAT");
+   //  char *d= (char *)&I2;
+   //  I2.crc= reverse(crc32b(d));
     
 
     // IEND[] = {"I", "E", "N", "D"};

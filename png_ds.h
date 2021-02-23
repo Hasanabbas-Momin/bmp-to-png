@@ -1,6 +1,10 @@
 #ifndef pngds_h
 #define pngds_h
 #pragma pack(1)
+// struct GRAYSCALE                                        // struct to store information of a single pixel 
+// {
+//     unsigned char gray;
+// };
 struct HEADER{
 
     char arr[8];
@@ -43,14 +47,15 @@ struct IHDR{
 //No PLTE chunk for us as it is grayscale(colour_type=0)
 
 
-struct IDAT{
+// struct IDAT{
     
-    unsigned int size;
-    char str[4];//should be "IDAT"
-    unsigned char pixels;
-    unsigned int crc;
+//     unsigned int size;
+//     char str[4];//should be "IDAT"
+//     struct GRAYSCALE **graycolor;
+//     // unsigned char pixels;
+//     unsigned int crc;
     
-};
+// };
 
 
 struct TRNS{//ancillary chunk
@@ -93,7 +98,7 @@ struct IEND{
 
 struct HEADER h1;
 struct IHDR I1;
-struct IDAT I2;
+// struct IDAT I2;
 struct IEND end;
 
 
