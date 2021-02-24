@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int reverse(int variable);
+int unsigned reverse(int variable);
 struct GRAYSCALE                                        // struct to store information of a single pixel 
 {
     unsigned char gray;
@@ -22,12 +22,13 @@ struct IMAGE image;
 void freeimagedata(struct IMAGE picture_data);
 struct IMAGE Read_BMPfile(char *file);
 
+int def(FILE *source, FILE *dest, int level);
 // void BMP_TO_PNG()
 // struct HEADER h1;
 // struct IHDR I1;
 // struct IDAT I2;
 
-extern int writepng(struct HEADER h1,struct IHDR I1, struct IEND end, int);
+extern int writepng(struct HEADER h1,struct IHDR I1, struct IEND end);
 
 void freeimagedata(struct IMAGE picture_data);
 #endif

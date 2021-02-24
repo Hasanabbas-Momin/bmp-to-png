@@ -7,7 +7,7 @@
 
 
 
-extern int reverse(int variable)
+extern unsigned int reverse(int variable)
 {
     // int variable = 0x12345678; /* 4 byte integer containing some value */
     char byte[4]; /* Variables to hold the char-values */
@@ -23,5 +23,5 @@ extern int reverse(int variable)
     byte[2] = ((char*)(&variable))[1];
     byte[1] = ((char*)(&variable))[2];
     byte[0] = ((char*)(&variable))[3];
-    return *((int*)byte);
+    return *((unsigned int*)byte);
 }

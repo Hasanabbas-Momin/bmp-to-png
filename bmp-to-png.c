@@ -5,8 +5,9 @@
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include "zlib.h"
 
-unsigned int crc32b(unsigned char *message);
+unsigned int crc32b(unsigned char *message);          
 
 struct HEADER h1;
 struct IHDR I1;
@@ -69,9 +70,11 @@ void BMP_TO_PNG()
     I1.cm = 0;
     I1.fm = 0;
     I1.im = 0;
-    char *c= (char *)&I1;
-    I1.crc= reverse(crc32b(c));
+    char *c= (char *)&I1.str;
+   //  I1.crc = crc32(0L, Z_NULL, 0);
 
+   //  I1.crc= reverse(crc32b(c));
+   I1.crc = crc32(0,(char*)&I1 ,17);
     
    //  I2.size = reverse(img_info.header_size);
    //  // I2.str = "IDAT";
@@ -82,9 +85,15 @@ void BMP_TO_PNG()
 
     // IEND[] = {"I", "E", "N", "D"};
     strcpy(end.iend, "IEND");
-    char *e= (char *)&end;
-    end.crc= reverse(crc32b(e));
-}
+   //  char *e= (char *)&end.iend;
+   //  end.crc = crc32(0L, Z_NULL, 0);
+   end.size = 0;
+   //  end.crc= crc32(0, e, sizeof(e));
+   // end.crc[0]=0xae;
+	// end.crc[1]=0x42;
+	// end.crc[2]=0x60;
+	// end.crc[3]=0x82;
+}  
 
 
 unsigned int crc32b(unsigned char *message) {

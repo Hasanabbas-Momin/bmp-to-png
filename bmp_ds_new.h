@@ -33,7 +33,7 @@ struct Image_info
     unsigned short int color_planes;
     unsigned short int bpp;        //bits per pixel for us it is 8(grayscale)
     unsigned int compression;
-    unsigned int image_size;
+    unsigned int image_size;        // size of actual pixel data
     int not_needed[4];            //XpixelsPerMeter, YpixelsPerMeter , TotalColors , ImportantColors
 
 //     Field Name, Size in bytes, Description

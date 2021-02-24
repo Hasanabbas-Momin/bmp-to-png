@@ -22,7 +22,7 @@ struct HEADER{
 
 struct IHDR{
     
-    unsigned int size;//length of data in file
+    // unsigned int size;//length of data in file
     char str[4];//should be "IHDR"
     int width;
     int height;
@@ -32,6 +32,7 @@ struct IHDR{
     char cm;//compression method
     char fm;//filter method
     char im;//interlace method
+    unsigned int size;
     unsigned int crc;
     // Width	4 bytes
     // Height	4 bytes
@@ -86,8 +87,10 @@ struct BKGD{//ancillary chunk
 
 
 struct IEND{
+    unsigned int size;
     char iend[4];//should be "IEND"
-    unsigned int crc;
+    // unsigned int crc;
+    unsigned char crc[4];
 };
 //no sBIT as sample_depth=bit_depth=8
 //fyi on sbit:https://stackoverflow.com/questions/9503994/whats-the-purpose-of-the-sbit-chunk-in-the-png-file

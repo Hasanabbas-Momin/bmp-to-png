@@ -82,15 +82,15 @@ struct IMAGE Read_BMPfile(char *file)                   // final function to exe
 
 
     fread(&img_info.header_size,sizeof(struct Image_info),1,fp);            // reading img info
-    if((img_info.header_size != 40) || (img_info.bpp != 1) || (img_info.compression != 0 ))
+    if((img_info.header_size != 40) || (img_info.bpp != 8) || (img_info.compression != 0 ))
     {
         fclose(fp);
         perror("Image not compatible .") ;
     }
     
        
-    printf("Header size: %u\nwidth: %d\nheight: %d\ncolorplanes: %hu\nBytes per pixel: %hu\nCompression: %u\nSize of image: %u",
-            img_info.header_size,img_info.width,img_info.height,img_info.color_planes,img_info.bpp,img_info.compression,img_info.image_size);
+    printf("Header size: %u\nwidth: %d\nheight: %d\ncolorplanes: %hu\nBits per pixel: %hu\nCompression: %u\nSize of image: %u\n offset = %u",
+            img_info.header_size,img_info.width,img_info.height,img_info.color_planes,img_info.bpp,img_info.compression,img_info.image_size,bmp_hdr.offset );
 
     fseek(fp,bmp_hdr.offset,SEEK_SET);                          // to set the pointer(fp) to the initial of the image pixel data
     image = readImage(fp,img_info.height,img_info.width);       // call of function to read image data
