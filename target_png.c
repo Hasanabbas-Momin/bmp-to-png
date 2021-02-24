@@ -30,15 +30,6 @@ extern int writepng(struct HEADER h1,struct IHDR I1, struct IEND end, int idatcr
       //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
         fwrite(image.graycolor[i],1,img_info.width,ft);     // sizeof(struct GRAYSCALE)    img_info.width       sizeof(image.graycolor[i])
    }
-   //can we try this 
-   //for(int i=0;i<img_info.height;i++)
-   //{
-      //for(int j=0;j<img_info.width;j++);
-      //{
-         //fwrite(image.graycolor[i][j],1,1,ft);
-      //}
-
-
    fwrite(&idatcrc,sizeof(unsigned int),1,ft);//writing the crc in IDAT chunk
    
    fwrite(&end,sizeof(struct IEND),1,ft);//writing the IEND chunk   
