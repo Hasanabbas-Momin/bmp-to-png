@@ -44,7 +44,7 @@ extern int writepng(struct HEADER h1,struct IHDR I1, struct IEND end)
    
    for(int i=(img_info.height-1);i>=0;i--)//writing the pixel data in IDAT chunk
    {
-      //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  // COME ON GUYS ATLEAST WATCH THE VIDEO PROPERLY
+      //   image.graycolor[i] = (struct GRAYSCALE*) malloc(img_info.width*sizeof(struct GRAYSCALE));  
       //   fwrite(arr, 1, 1, f1);
         fwrite(image.graycolor[i],1,img_info.width,f1);     // sizeof(struct GRAYSCALE)    img_info.width       sizeof(image.graycolor[i])
    }-
