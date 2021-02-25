@@ -11,6 +11,7 @@ unsigned int crc32b(unsigned char *message);
 
 struct HEADER h1;
 struct IHDR I1;
+struct IHDRcrc icrc;
 
 struct IEND end;
 void BMP_TO_PNG()
@@ -61,20 +62,28 @@ void BMP_TO_PNG()
     I1.size = reverse(13);
     // I1.str = "IHDR";
     strcpy(I1.str, "IHDR");
+    strcpy(icrc.str, "IHDR");
     I1.width = reverse(img_info.width);
+    
+    icrc.width = I1.width;
     // printf("\n%i", I1.width);
     I1.height = reverse(img_info.height);
-    // printf("\n%i", I1.height);
+    icrc.height = I1.height;// printf("\n%i", I1.height);
     I1.bit_depth = 8;
+    icrc.bit_depth = I1.bit_depth;
     I1.colour_type = 0;
+    icrc.colour_type = I1.colour_type;
     I1.cm = 0;
+    icrc.cm = I1.cm;
     I1.fm = 0;
+    icrc.fm = I1.fm;
     I1.im = 0;
-    char *c= (char *)&I1.str;
+    icrc.im = I1.im;
+   //  char *c= (char *)&I1.str;
    //  I1.crc = crc32(0L, Z_NULL, 0);
 
    //  I1.crc= reverse(crc32b(c));
-   I1.crc = crc32(0,(char*)&I1 ,17);
+   I1.crc = crc32(0,(char*)&icrc ,17);
     
    //  I2.size = reverse(img_info.header_size);
    //  // I2.str = "IDAT";

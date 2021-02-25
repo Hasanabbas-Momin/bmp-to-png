@@ -39,7 +39,7 @@ int main(){
    
    
 
-    char s[50];
+    char s[20];
     scanf("%s", s);
     Read_BMPfile(s);
     BMP_TO_PNG();

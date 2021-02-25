@@ -59,9 +59,8 @@ extern int writepng(struct HEADER h1,struct IHDR I1, struct IEND end)
    
    fwrite(&h1,sizeof(struct HEADER),1,ft);//writing the header chunk
    printf("\n%li", sizeof(struct IHDR));
-   fwrite(&I1.size,sizeof(int),1,ft);//writing the IHDR chunk
-   fwrite(&I1,17,1,ft);
-   fwrite(&I1.crc,4,1,ft);
+   fwrite(&I1,sizeof(struct IHDR),1,ft);//writing the IHDR chunk
+   
    fwrite(&idatsize,sizeof(unsigned int),1,ft); //writing the IDAT chunk
    fwrite(&idat,4*sizeof(unsigned char),1,ft);
    

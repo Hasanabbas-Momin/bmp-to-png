@@ -22,7 +22,7 @@ struct HEADER{
 
 struct IHDR{
     
-    // unsigned int size;//length of data in file
+    unsigned int size;//length of data in file
     char str[4];//should be "IHDR"
     int width;
     int height;
@@ -32,7 +32,6 @@ struct IHDR{
     char cm;//compression method
     char fm;//filter method
     char im;//interlace method
-    unsigned int size;
     unsigned int crc;
     // Width	4 bytes
     // Height	4 bytes
@@ -42,6 +41,18 @@ struct IHDR{
     // Filter method	1 byte
     // Interlace method	1 byte
 
+};
+struct IHDRcrc
+{
+    char str[4];//should be "IHDR"
+    int width;
+    int height;
+    //chars are of 1 byte
+    char bit_depth;// 8 for us. 256 shades of gray  :)
+    char colour_type;// 0 for us
+    char cm;//compression method
+    char fm;//filter method
+    char im;//interlace method
 };
 
 
@@ -59,21 +70,21 @@ struct IHDR{
 // };
 
 
-struct TRNS{//ancillary chunk
+// struct TRNS{//ancillary chunk
     
-    unsigned int size;
-    char str[4];//should be "tRNS" or 116 82 78 83
-    short transparency;
-    unsigned int crc;
+//     unsigned int size;
+//     char str[4];//should be "tRNS" or 116 82 78 83
+//     short transparency;
+//     unsigned int crc;
 
     
-    //  For colour types 0 or 2, two bytes per sample
-    //  are used regardless of the image bit depth . 
-    //  Pixels of the specified grey sample value or RGB sample values are treated as 
-    //  transparent (equivalent to alpha value 0); all other pixels are to be treated 
-    //  as fully opaque (alpha value 2bitdepth-1). If the image bit depth is less than 
-    //  16, the least significant bits are used and the others are 0.
-};
+//     //  For colour types 0 or 2, two bytes per sample
+//     //  are used regardless of the image bit depth . 
+//     //  Pixels of the specified grey sample value or RGB sample values are treated as 
+//     //  transparent (equivalent to alpha value 0); all other pixels are to be treated 
+//     //  as fully opaque (alpha value 2bitdepth-1). If the image bit depth is less than 
+//     //  16, the least significant bits are used and the others are 0.
+// };
 
 struct BKGD{//ancillary chunk
     
